@@ -16,8 +16,41 @@ public class Server {
         try(ServerSocket serverSocket = new ServerSocket(portNumber);){
 
             System.out.println("Waiting on player 1");
+//            while(true){
+//                try(Socket testSocket = serverSocket.accept();
+//                BufferedReader input = new BufferedReader(new InputStreamReader( testSocket.getInputStream()));
+//                PrintWriter output = new PrintWriter(testSocket.getOutputStream(),true);
+//
+//                ){
+//                    boolean isValid = ValidateUser(input,output);
+//                    if (isValid){
+//                        socket1 = testSocket;
+//                        break;
+//                    }else{
+//                        testSocket.close();
+//                    }
+//                }
+//            }
+
+
             socket1 = serverSocket.accept();
-            System.out.println("Waiting on player 2");
+//            System.out.println("Waiting on player 2");
+//            while(true){
+//                try(
+//                     Socket testSocket = serverSocket.accept();
+//                     BufferedReader input = new BufferedReader(new InputStreamReader( testSocket.getInputStream()));
+//                     PrintWriter output = new PrintWriter(testSocket.getOutputStream(),true);
+//                ){
+//                    boolean isValid = ValidateUser(input, output);
+//                    if (isValid){
+//                        socket2 = testSocket;
+//
+//                        break;
+//                    }else{
+//                        testSocket.close();
+//                    }
+//                }
+//            }
             socket2 = serverSocket.accept();
 
             System.out.println("Both players connected");
@@ -36,5 +69,25 @@ public class Server {
 
     public void CloseConnection(){
 
+    }
+
+    private boolean ValidateUser(BufferedReader input, PrintWriter output) throws IOException {
+        String username;
+        String password;
+
+
+        output.println("Prove yourself, enter your username: ");
+        username = input.readLine();
+        output.println("Prove yourself, enter your password: ");
+        password = input.readLine();
+
+        if((username.equals("dannyboi") && password.equals("re@margh_shelled"))|| (username.equals("matty7") && password.equals("win&win99")
+                )){
+            output.println("Access");
+            return true;
+        }else{
+            output.println("No Access");
+            return false;
+        }
     }
 }

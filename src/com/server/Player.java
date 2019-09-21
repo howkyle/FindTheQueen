@@ -14,6 +14,7 @@ public class Player {
     private int points;
     private BufferedReader input;
     private PrintWriter output;
+    private String suggestedQueenPosition;
 
 
     public Player(Socket socket){
@@ -43,6 +44,14 @@ public class Player {
 
     public int getPoints() {
         return points;
+    }
+
+    public String getSuggestedQueenPosition() {
+        return suggestedQueenPosition;
+    }
+
+    public void setSuggestedQueenPosition(String suggestedQueenPosition) {
+        this.suggestedQueenPosition = suggestedQueenPosition;
     }
 
     public Socket get_playerSocket() {
