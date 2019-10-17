@@ -14,14 +14,17 @@ public class Game {
     private BufferedReader input;
     private String serverOutput, clientInputLine;
     private int spotterGuess,  queenPosition; //hardcoded position for queen
-    private int roundCounter = 0, rounds = 3;
+    private int roundCounter = 0, rounds = 5;
     private Player _player1, _player2;
 
 
 
-    public Game(Socket player1, Socket player2) throws IOException {
-        _player1 = new Player(player1);
-        _player2 = new Player(player2);
+    public Game(Player player1, Player player2) throws IOException {
+//        _player1 = new Player(player1);
+//        _player2 = new Player(player2);
+
+        _player1 = player1;
+        _player2 = player2;
 
 //        output = new PrintWriter(_player1.get_playerSocket().getOutputStream(),true);
 //        input = new BufferedReader(new InputStreamReader( _player1.get_playerSocket().getInputStream()));
@@ -57,7 +60,7 @@ public class Game {
 
 
             System.out.println("End of round "+roundCounter);
-            if(clientInputLine == "lol" || roundCounter == rounds){
+            if(roundCounter == rounds){
                 DetermineWinner(_player1, _player2);
 
                 _player1.get_playerSocket().close();

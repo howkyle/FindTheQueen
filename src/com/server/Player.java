@@ -17,17 +17,19 @@ public class Player {
     private String suggestedQueenPosition;
 
 
-    public Player(Socket socket){
-        try{
+    public Player(Socket socket, BufferedReader reader, PrintWriter writer){
+//        try{
             _playerSocket = socket;
             points=0;
-            input = new BufferedReader(new InputStreamReader( _playerSocket.getInputStream()));
-            output = new PrintWriter(_playerSocket.getOutputStream(),true);
+//            input = new BufferedReader(new InputStreamReader( _playerSocket.getInputStream()));
+//            output = new PrintWriter(_playerSocket.getOutputStream(),true);
+            input = reader;
+            output = writer;
 
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public String getRole() {
